@@ -28,7 +28,7 @@ class Chat extends StatelessWidget {
                   backgroundColor: Colors.amberAccent,
                   child: Text(id.substring(0, 1).toUpperCase()),
                 ),
-                SizedBox(
+                const SizedBox(
                   width: 16,
                 ),
                 Column(
@@ -36,7 +36,7 @@ class Chat extends StatelessWidget {
                   children: [
                     Text(
                       id,
-                      style: TextStyle(fontWeight: FontWeight.bold),
+                      style: const TextStyle(fontWeight: FontWeight.bold),
                     ),
                     Text(message),
                   ],

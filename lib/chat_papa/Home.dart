@@ -3,7 +3,7 @@ import 'dart:io';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:logger/logger.dart';
-import 'package:toonflix/chat/Chat.dart';
+import 'package:toonflix/chat_papa/Chat.dart';
 
 class Home extends StatefulWidget {
   @override
@@ -30,11 +30,11 @@ class _HomeState extends State<Home> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: (Platform.isIOS
-          ? CupertinoNavigationBar(
+          ? const CupertinoNavigationBar(
               middle: Text("Chat App"),
             )
           : AppBar(
-              title: Text("Chat App"),
+              title: const Text("Chat App"),
             )) as PreferredSizeWidget,
       body: Column(
         children: [
@@ -60,8 +60,8 @@ class _HomeState extends State<Home> {
                   width: 10,
                 ),
                 Platform.isIOS
-                    ? CupertinoButton(
-                        child: Text("send"),
+                    ? ElevatedButton(
+                        child: const Text("send"),
                         onPressed: () {
                           handleSubmitted(_textEditingController.text);
                         },
@@ -69,13 +69,13 @@ class _HomeState extends State<Home> {
                     : ElevatedButton(
                         onPressed: () {
                           handleSubmitted(_textEditingController.text);
-                  },
-                  style: const ButtonStyle(
-                    backgroundColor:
-                    MaterialStatePropertyAll(Colors.amberAccent),
-                  ),
-                  child: const Text("Send"),
-                ),
+                        },
+                        style: const ButtonStyle(
+                          backgroundColor:
+                              MaterialStatePropertyAll(Colors.amberAccent),
+                        ),
+                        child: const Text("Send"),
+                      ),
               ],
             ),
           ),
