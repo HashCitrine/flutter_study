@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:toonflix/stateless/App.dart';
+import 'package:toonflix/chat_papa/App.dart';
+import 'package:toonflix/demo/App.dart' as Demo;
+import 'package:toonflix/toon/App.dart' as Toon;
 
 void main() {
+  // runApp(const Demo.App());
   runApp(const App());
 }
 
