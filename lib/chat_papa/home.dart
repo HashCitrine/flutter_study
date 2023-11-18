@@ -3,7 +3,7 @@ import 'dart:io';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:logger/logger.dart';
-import 'package:flutter_study/chat_papa/Chat.dart';
+import 'package:flutter_study/chat_papa/chat.dart';
 
 class Home extends StatefulWidget {
   @override

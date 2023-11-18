@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_study/chat_chef/constants/Palette.dart';
+import 'package:flutter_study/chat_chef/constants/palette.dart';
+import 'package:flutter_study/chat_chef/constants/form_type.dart';
 
 class HomeFormField<T> extends StatelessWidget {
   final int keyVal;
@@ -8,7 +9,8 @@ class HomeFormField<T> extends StatelessWidget {
   final String hint;
   final FormFieldValidator<String> validator;
   late String val;
-  HomeFormField({super.key, required this.keyVal, required this.icon, required this.hint, required this.validator});
+  final FormType type;
+  HomeFormField({super.key, required this.keyVal, required this.icon, required this.hint, required this.validator, required this.type});
 
 
   @override
@@ -17,6 +19,11 @@ class HomeFormField<T> extends StatelessWidget {
       onSaved: (newValue) {
         val = newValue!;
       },
+      onChanged: (value) {
+        val = value;
+      },
+      obscureText: FormType.password == type ? true : false,
+      keyboardType: setKeyboard(type),
       key: ValueKey(keyVal),
       validator: validator,
       decoration: InputDecoration(
@@ -45,5 +52,18 @@ class HomeFormField<T> extends StatelessWidget {
         contentPadding: const EdgeInsets.all(10),
       ),
     );
+  }
+
+  String get value {
+    return val;
+  }
+
+  TextInputType setKeyboard(FormType type) {
+    switch (type) {
+      case FormType.email:
+        return TextInputType.emailAddress;
+      default:
+        return TextInputType.text;
+    }
   }
 }

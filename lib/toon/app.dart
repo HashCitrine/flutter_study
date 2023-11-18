@@ -1,9 +1,9 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_study/toon/api/ApiService.dart';
-import 'package:flutter_study/toon/model/WebtoonModel.dart';
-import 'package:flutter_study/toon/widgets/Detail.dart';
-import 'package:flutter_study/toon/widgets/WebtoonCard.dart';
+import 'package:flutter_study/toon/api/api_service.dart';
+import 'package:flutter_study/toon/model/webtoon_model.dart';
+import 'package:flutter_study/toon/widgets/detail.dart';
+import 'package:flutter_study/toon/widgets/webtoon_card.dart';
 
 class App extends StatefulWidget {
   const App({super.key});

@@ -1,7 +1,11 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_study/chat_chef/constants/Palette.dart';
+import 'package:flutter_study/chat_chef/constants/palette.dart';
+import 'package:flutter_study/chat_chef/constants/form_type.dart';
+import 'package:flutter_study/chat_chef/page/chat.dart';
 import 'package:flutter_study/chat_chef/widget/home_form_field.dart';
+import 'package:logger/logger.dart';
 
 class Home extends StatefulWidget {
   const Home({super.key});
@@ -11,6 +15,12 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
+  final _auth = FirebaseAuth.instance;
+
+  late HomeFormField username;
+  late HomeFormField email;
+  late HomeFormField password;
+
   bool isSignupScreen = true;
   var signupHeight = 30.0;
   int animationDuration = 200;
@@ -19,7 +29,7 @@ class _HomeState extends State<Home> {
 
   void _tryValidation() {
     final isValid = _formKey.currentState!.validate();
-    if(isValid) {
+    if (isValid) {
       _formKey.currentState!.save();
     }
   }
@@ -66,7 +76,8 @@ class _HomeState extends State<Home> {
                           ),
                           children: [
                             TextSpan(
-                              text: isSignupScreen ? ' to Yummy chat!' : ' back',
+                              text:
+                                  isSignupScreen ? ' to Yummy chat!' : ' back',
                               style: const TextStyle(
                                 letterSpacing: 1.0,
                                 fontSize: 25,
@@ -179,13 +190,14 @@ class _HomeState extends State<Home> {
                           key: _formKey,
                           child: Column(
                             children: [
-                              HomeFormField(
-                                validator: (value) {
-                                  if (value!.isEmpty || value.length < 4) {
-                                    return 'Please enter at least 4 Characters';
-                                  }
-                                  return null;
-                                },
+                              username = HomeFormField(
+                                  type: FormType.username,
+                                  validator: (value) {
+                                    if (value!.isEmpty || value.length < 4) {
+                                      return 'Please enter at least 4 Characters';
+                                    }
+                                    return null;
+                                  },
                                   keyVal: isSignupScreen ? 1 : 2,
                                   icon: Icon(
                                     Icons.account_circle,
@@ -196,9 +208,11 @@ class _HomeState extends State<Home> {
                                 height: 8,
                               ),
                               if (isSignupScreen)
-                                HomeFormField(
+                                email = HomeFormField(
+                                    type: FormType.email,
                                     validator: (value) {
-                                      if (value!.isEmpty || value.contains('@')) {
+                                      if (value!.isEmpty ||
+                                          !value.contains('@')) {
                                         return 'Please enter a valid email address';
                                       }
                                       return null;
@@ -212,13 +226,14 @@ class _HomeState extends State<Home> {
                               SizedBox(
                                 height: 8,
                               ),
-                              HomeFormField(
-                                validator: (value) {
-                                  if(value!.isEmpty || value.length < 6) {
-                                    return 'Password must be as lease 7 characters long.';
-                                  }
-                                  return null;
-                                },
+                              password = HomeFormField(
+                                  type: FormType.password,
+                                  validator: (value) {
+                                    if (value!.isEmpty || value.length < 6) {
+                                      return 'Password must be as lease 7 characters long.';
+                                    }
+                                    return null;
+                                  },
                                   keyVal: isSignupScreen ? 4 : 5,
                                   icon: Icon(
                                     Icons.lock,
@@ -250,8 +265,37 @@ class _HomeState extends State<Home> {
                     borderRadius: BorderRadius.circular(50),
                   ),
                   child: GestureDetector(
-                    onTap: () {
-                      _tryValidation();
+                    onTap: () async {
+                      if (isSignupScreen) {
+                        _tryValidation();
+                        print(email.value);
+                        print(password.value);
+                        try {
+                          final newUser = await _auth.createUserWithEmailAndPassword(
+                              email: email.value,
+                              password: password.value);
+
+                          if (newUser.user != null) {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) {
+                                  return Chat();
+                                },
+                              ),
+                            );
+                          }
+                        } catch (error, stacktrace) {
+                          Logger().e(error, stackTrace: stacktrace);
+                          ScaffoldMessenger.of(context).showSnackBar(
+                            SnackBar(
+                              content:
+                                  Text('Please Check Your Email And Password'),
+                              backgroundColor: Colors.blue,
+                            ),
+                          );
+                        }
+                      }
                     },
                     child: Container(
                       decoration: BoxDecoration(
@@ -282,7 +326,9 @@ class _HomeState extends State<Home> {
             AnimatedPositioned(
               duration: Duration(milliseconds: animationDuration),
               curve: Curves.easeIn,
-              top: isSignupScreen ? MediaQuery.of(context).size.height - 125 : MediaQuery.of(context).size.height - 165,
+              top: isSignupScreen
+                  ? MediaQuery.of(context).size.height - 125
+                  : MediaQuery.of(context).size.height - 165,
               right: 0,
               left: 0,
               child: Column(

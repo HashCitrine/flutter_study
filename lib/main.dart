@@ -1,11 +1,16 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_study/chat_papa/App.dart';
-import 'package:flutter_study/demo/App.dart' as Demo;
-import 'package:flutter_study/toon/App.dart' as Toon;
-import 'package:flutter_study/chat_chef/App.dart' as Chef;
+import 'package:flutter_study/chat_papa/app.dart';
+import 'package:flutter_study/demo/app.dart' as Demo;
+import 'package:flutter_study/toon/app.dart' as Toon;
+import 'package:flutter_study/chat_chef/app.dart' as Chef;
+import 'package:firebase_core/firebase_core.dart';
+import 'firebase_options.dart';
 
-void main() {
-  // runApp(const Demo.App());
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+  );
   runApp(const Chef.App());
 }
 
