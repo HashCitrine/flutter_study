@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:toonflix/demo/widgets/Button.dart';
-import 'package:toonflix/demo/widgets/CurrencyCard.dart';
+import 'package:flutter_study/demo/widgets/Button.dart';
+import 'package:flutter_study/demo/widgets/CurrencyCard.dart';
 
 class App extends StatelessWidget {
   const App({super.key});

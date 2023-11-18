@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:toonflix/chat_papa/App.dart';
-import 'package:toonflix/demo/App.dart' as Demo;
-import 'package:toonflix/toon/App.dart' as Toon;
+import 'package:flutter_study/chat_papa/App.dart';
+import 'package:flutter_study/demo/App.dart' as Demo;
+import 'package:flutter_study/toon/App.dart' as Toon;
+import 'package:flutter_study/chat_chef/App.dart' as Chef;
 
 void main() {
   // runApp(const Demo.App());
-  runApp(const App());
+  runApp(const Chef.App());
 }
 
 class MyApp extends StatelessWidget {
