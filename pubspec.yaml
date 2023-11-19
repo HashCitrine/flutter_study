@@ -1,4 +1,4 @@
-name: toonflix
+name: flutter_study
 description: A new Flutter project.
 # The following line prevents the package from being accidentally published to
 # pub.dev using `flutter pub publish`. This is preferred for private packages.
@@ -31,14 +31,21 @@ dependencies:
   flutter:
     sdk: flutter
 
-  http: ^1.1.0
 
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^1.0.2
+  http: ^1.1.0
   logger: ^2.0.2+1
   url_launcher: ^6.2.1
   shared_preferences: ^2.2.2
+  firebase_core: ^2.22.0
+  firebase_auth: ^4.14.0
+  cloud_firestore: ^4.13.1
+  modal_progress_hud_nsn: ^0.4.0
+  flutter_chat_bubble: ^2.0.2
+  image_picker: ^1.0.4
+  firebase_storage: ^11.5.1
 
 dev_dependencies:
   flutter_test:
@@ -50,6 +57,10 @@ dev_dependencies:
   # package. See that file for information about deactivating specific lint
   # rules and activating additional ones.
   flutter_lints: ^2.0.0
+  cupertino_icons: ^1.0.2
+  logger: ^2.0.2+1
+  url_launcher: ^6.2.1
+  shared_preferences: ^2.2.2
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
@@ -61,6 +72,8 @@ flutter:
   # included with your application, so that you can use the icons in
   # the material Icons class.
   uses-material-design: true
+  assets:
+    - image/
 
   # To add assets to your application, add an assets section, like this:
   # assets:

@@ -1,11 +1,17 @@
 import 'package:flutter/material.dart';
-import 'package:toonflix/chat_papa/App.dart';
-import 'package:toonflix/demo/App.dart' as Demo;
-import 'package:toonflix/toon/App.dart' as Toon;
+import 'package:flutter_study/chat_papa/app.dart';
+import 'package:flutter_study/demo/app.dart' as Demo;
+import 'package:flutter_study/toon/app.dart' as Toon;
+import 'package:flutter_study/chat_chef/app.dart' as Chef;
+import 'package:firebase_core/firebase_core.dart';
+import 'firebase_options.dart';
 
-void main() {
-  // runApp(const Demo.App());
-  runApp(const App());
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+  );
+  runApp(const Chef.App());
 }
 
 class MyApp extends StatelessWidget {

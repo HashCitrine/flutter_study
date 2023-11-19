@@ -1,4 +1,4 @@
-import 'package:toonflix/chat_papa//Home.dart';
+import 'package:flutter_study/chat_papa//home.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -15,5 +15,4 @@ class App extends StatelessWidget {
       home: Home(),
     );
   }
-
 }

@@ -1,6 +1,6 @@
 {
-    "name": "toonflix",
-    "short_name": "toonflix",
+    "name": "flutter_study",
+    "short_name": "flutter_study",
     "start_url": ".",
     "display": "standalone",
     "background_color": "#0175C2",

@@ -2,8 +2,8 @@ import 'dart:convert';
 
 import 'package:flutter/foundation.dart';
 import 'package:http/http.dart' as http;
-import 'package:toonflix/toon/model/EpisodeModel.dart';
-import 'package:toonflix/toon/model/WebtoonModel.dart';
+import 'package:flutter_study/toon/model/episode_model.dart';
+import 'package:flutter_study/toon/model/webtoon_model.dart';
 class ApiService {
   static const String baseUrl = "https://webtoon-crawler.nomadcoders.workers.dev";
   static const String today = "today";
