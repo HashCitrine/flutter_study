@@ -8,20 +8,19 @@ class HomeFormField<T> extends StatelessWidget {
   final Icon icon;
   final String hint;
   final FormFieldValidator<String> validator;
-  late String val;
+  late String _val;
   final FormType type;
-  HomeFormField({super.key, required this.keyVal, required this.icon, required this.hint, required this.validator, required this.type});
+  final ValueChanged<String>? onChanged;
+  HomeFormField({super.key, required this.keyVal, required this.icon, required this.hint, required this.validator, required this.type, this.onChanged});
 
 
   @override
   Widget build(BuildContext context) {
     return TextFormField(
-      onSaved: (newValue) {
-        val = newValue!;
-      },
-      onChanged: (value) {
-        val = value;
-      },
+      // onSaved: (newValue) {
+      //   _val = newValue!;
+      // },
+      onChanged: onChanged,
       obscureText: FormType.password == type ? true : false,
       keyboardType: setKeyboard(type),
       key: ValueKey(keyVal),
@@ -55,7 +54,7 @@ class HomeFormField<T> extends StatelessWidget {
   }
 
   String get value {
-    return val;
+    return _val;
   }
 
   TextInputType setKeyboard(FormType type) {

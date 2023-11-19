@@ -4,8 +4,11 @@
 
 list(APPEND FLUTTER_PLUGIN_LIST
   cloud_firestore
+  file_selector_windows
   firebase_auth
   firebase_core
+  firebase_storage
+  modal_progress_hud_nsn
   url_launcher_windows
 )
 

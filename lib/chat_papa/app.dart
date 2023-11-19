@@ -15,5 +15,4 @@ class App extends StatelessWidget {
       home: Home(),
     );
   }
-
 }

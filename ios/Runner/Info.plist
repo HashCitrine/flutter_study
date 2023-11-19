@@ -45,5 +45,11 @@
 	<true/>
 	<key>UIApplicationSupportsIndirectInputEvents</key>
 	<true/>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>Need NSPhotoLibraryUsage</string>
+	<key>NSCameraUsageDescription</key>
+	<string>Need NSCameraUsage</string>
+	<key>NSMicrophoneUsageDescription</key>
+    <string>Need NSMicrophoneUsage</string>
 </dict>
 </plist>
