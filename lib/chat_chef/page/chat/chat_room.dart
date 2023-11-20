@@ -1,7 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_study/chat_chef/page/chat/message_log.dart';
-import 'package:flutter_study/chat_chef/page/chat/message_writer.dart';
+import 'package:flutter_study/chat_chef/page/message/message_log.dart';
+import 'package:flutter_study/chat_chef/page/message/message_writer.dart';
 import 'package:logger/logger.dart';
 
 class ChatRoom extends StatelessWidget {
